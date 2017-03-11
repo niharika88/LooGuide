@@ -1,0 +1,24 @@
+<div class="container">
+<% if current_user %>
+<br>
+<h3><%= @user.name.capitalize %>'s Previous Reviews:</h3>
+<br>
+<% @user.reviews.each do |review| %>
+ <h4><p><a href="/restrooms/<%= review.restroom.id %>"><%= review.restroom.name %></a></p></h4>
+ <p>Rating: <%= review.rating %> </p>
+ <p>Comments: <%= review.comment %> </p><br>
+
+<% end %>
+<br><br>
+<%= link_to "View map", root_path %> <br>
+<%= link_to "Add a restroom",  new_restroom_path %>
+
+
+
+<% else %>
+ <p> <%= link_to "Sign up", signup_path %> </p>
+ <p> <%= link_to "Log in", login_path %> </p>
+ <% end %>
+ </div>
+
+

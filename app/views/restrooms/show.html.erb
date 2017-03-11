@@ -1,0 +1,27 @@
+<div class="container">
+<h1> <%= @restroom.name %> <h1>
+  <h3>Location: <%= @restroom.location %> </h3>
+  <h3>Long: <%= @restroom.longitude %> </h3>
+  <h3>Lat: <%= @restroom.latitude %> </h3>
+  <br>
+  <div class="card">
+  <div class="card-block">
+    <ul>
+      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@restroom.latitude},#{@restroom.longitude}&markers=#{@restroom.latitude},#{@restroom.longitude}&zoom=16&size=640x400&key=AIzaSyAJtlMEzHK1YIlEguvZHrhg4PHsjYTdXs8",
+              class: 'img-fluid img-rounded', alt: "#{@restroom.name} on the map"%>
+    </ul>
+  </div>
+</div>
+  <h4>Reviews</h4>
+  <% @restroom.reviews.each do |review| %>
+  <br>
+  
+
+  <p><a href="/users/<%= review.user_id %> "><%= "@#{review.user.name}" %></a> reports... </p>
+  <p><%= "Rating: #{review.rating}" %></p>
+  <p><%= review.comment %></p>
+  <% end %>
+
+
+<%= render './reviews/review_form' %>
+</div>

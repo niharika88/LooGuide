@@ -1,0 +1,26 @@
+
+<% if user_signed_in? %>
+
+<h2>Review this loo</h2>
+
+	<%= form_for @review do |f| %>
+	<% if @review.errors.any? %>
+	  <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved: </h2>
+
+	<ul>
+	  <% @review.errors.full_messages.each do |message| %>
+	  <li> <%= message %> </li>
+	  <% end %>
+	</ul>
+	  <% end %>
+	<%= f.hidden_field :restroom_id, value: @restroom.id %>
+	<%= f.label :rating %>
+	<%= f.select :rating, (1..10) %> <br><br>
+
+	<%= f.label :comments %> <br> <br>
+	<%= f.text_area :comment, class: "form-control" %><br>
+	<%= f.submit "Submit your review", class: 'btn btn-primary btn-block'%>
+
+	<% end %>
+
+<% end %>

@@ -1,0 +1,6 @@
+class RatingViewObject
+
+  
+
+
+end

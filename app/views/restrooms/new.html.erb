@@ -1,0 +1,51 @@
+<!-- refactor as a partial later -->
+
+<% if user_signed_in? %>
+  <div class="container">
+
+  <%= form_for @location, html: {class: "form-signin"} do |f| %>
+    <% if @location.errors.any? %>
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved: </h2>
+
+      <ul>
+        <% @location.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+        <% end %>
+      </ul>
+   <% end %>
+    <%= f.label :name, "Restroom Name" %>
+    <%= f.text_field :name, class: "form-control" %> <br><br>
+    <%= f.label :address, "Restroom Address" %>
+    <%= f.text_field :location, class: "form-control" %><br><br>  <!-- if Geolocator can't find it this will be invalid -->
+    <%= f.label :borough %>
+    <%= f.select :borough, {"Manhattan" => "New York County", "Bronx" => "Bronx County", "Brooklyn" => "Kings County", "Queens" => "Queens County", "Staten Island" => "Richmond County"}, class: "form-control" %> <br><br>
+    <%= f.label :Type_of_Establishment %>
+    <%= f.select :location_type, ["Park", "Restaurant / Cafe", "Store / Shop", "Other"], class: "form-control" %> <br><br>
+    <%= f.label :handicap_Accessible %>
+    <%= f.select :handicap_accessible, ["yes", "no"], class: "form-control" %> <br><br>
+    <%= f.label :Open_Year_Round, "Open year-round"%>
+    <%= f.select :open_year_round, ["yes", "no"], class: "form-control" %> <br><br>
+    
+    
+
+
+    <!--nested form -->
+    <%= f.fields_for :reviews do |r| %>
+      <%= r.hidden_field :user_id, value: current_user.id %>
+      <%= r.label :rating %>
+      <%= r.select :rating, (1..10), class: "form-control"  %><br /><br />
+      <%= r.label :comment %>
+      <%= r.text_area :comment, class: "form-control" %>
+    <% end %>
+    <!-- nested form-->
+    <br><br>
+    <%= f.submit "Submit new location", class: "btn btn-lg btn-primary btn-block" %>
+
+    <% end %>
+    </div>
+<% else %>
+  Please log in to add a review
+
+
+  
+<% end %>
