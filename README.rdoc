@@ -1,13 +1,1 @@
-= Restroom Router
 
-=== What is it?
-A Ruby on Rails application to help people find and keep track of free restrooms throughout NYC
-
-=== Dependencies
-* Google Maps API
-* Bootsrap 3
-
-=== Collaborators
-* Hilary Winn - https://github.com/hwinn4
-* Lesly Brezilien - https://github.com/lbrezilien
-* Jeff Slutzky - https://github.com/jeffslutzky
