@@ -20,7 +20,7 @@ gem 'recursive-open-struct'
 gem 'google_directions'
 gem 'gmaps4rails'
 gem 'underscore-rails'
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'compass-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

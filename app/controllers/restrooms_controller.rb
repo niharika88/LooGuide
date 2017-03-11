@@ -1,6 +1,7 @@
 class RestroomsController < ApplicationController
 
   def index
+    binding.pry
     @restrooms = Restroom.all
     @hash = 
     {lat:
